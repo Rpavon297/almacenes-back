@@ -20,5 +20,5 @@ from manager_api.constants import API_VERSION
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('api-v' + API_VERSION, include("manager_api.urls"))
+    path('api/v{}/'.format(str(API_VERSION)), include("manager_api.urls"))
 ]

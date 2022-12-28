@@ -19,7 +19,7 @@ class WarehouseView(APIView):
         if params.get("id", None):
             data = data.filter(id=params.get("id"))
 
-        self.response = data.all().WarehouseSerializer(data, many=True).data
+        self.response = WarehouseSerializer(data.all(), many=True).data
         return Response({
             "response": self.response,
             "error": self.error
