@@ -32,11 +32,12 @@ class Stock(models.Model):
 
 
 class Order(models.Model):
-    stock = models.OneToOneField(
+    id = models.AutoField(primary_key=True)
+    stock = models.ForeignKey(
         Stock,
+        unique=False,
         on_delete=models.DO_NOTHING,
-        primary_key=True
     )
 
-    date = models.DateField(null=False, default=datetime.now().strftime("%d/%m/%Y %H:%M:%S"))
+    date = models.DateTimeField(null=False, default='28/12/2022 21:54:37')
     quantity = models.IntegerField(null=False)

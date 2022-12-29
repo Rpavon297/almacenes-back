@@ -1,10 +1,10 @@
-from django.contrib import admin
-from django.urls import path, re_path
-from manager_api.views import WarehouseView
-from manager_api.constants import API_VERSION
-
+from django.urls import path
+from manager_api.views import WarehouseView, ProductsView, StockView, OrderView
 
 
 urlpatterns = [
-    path('warehouses/', WarehouseView.as_view(), name='Warehouses'),
+    path('warehouse/', WarehouseView.as_view(), name='Warehouse'),
+    path('stock/', StockView.as_view(), name='stock'),
+    path('order/', OrderView.as_view(), name='order'),
+    path('product/', ProductsView.as_view(), name='product'),
 ]
