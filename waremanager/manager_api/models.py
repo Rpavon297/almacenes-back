@@ -1,5 +1,5 @@
 from django.db import models
-from datetime import datetime
+from manager_api.constants import META_OPTIONS
 
 
 class Warehouse(models.Model):
@@ -18,12 +18,12 @@ class Stock(models.Model):
             )
         ]
 
-    warehouse = models.OneToOneField(
+    warehouse = models.ForeignKey(
         Warehouse,
         on_delete=models.CASCADE,
     )
 
-    product = models.OneToOneField(
+    product = models.ForeignKey(
         Product,
         on_delete=models.CASCADE,
     )
@@ -41,3 +41,10 @@ class Order(models.Model):
 
     date = models.DateTimeField(null=False, default='28/12/2022 21:54:37')
     quantity = models.IntegerField(null=False)
+
+
+class Meta(models.Model):
+    # Here we store the default warehouse, instead of using a boolean in the warehouse table, to enforce only one wh
+    # being the default and avoid having to filter/update the whole table to check/update the default one
+    option = models.CharField(max_length=255, null=False, choices=META_OPTIONS)
+    value = models.IntegerField(null=False)

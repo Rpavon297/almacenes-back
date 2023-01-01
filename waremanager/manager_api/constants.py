@@ -1,1 +1,7 @@
 API_VERSION = 0
+
+# META APP PARAMETERS
+DEFAULT_WH = "DEF_WH"
+META_OPTIONS = [
+    (DEFAULT_WH, "Default warehouse")
+]
